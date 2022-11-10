@@ -30,7 +30,9 @@ class ButtonControlsFragment : BindingFragment<FragmentButtonControlsBinding>() 
         }
 
         binding.getDataButton.setOnClickListener{
-            viewModel.getAllRecords()
+            viewModel.getAllRecords {
+                Toast.makeText(activity, "Loaded records from database", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

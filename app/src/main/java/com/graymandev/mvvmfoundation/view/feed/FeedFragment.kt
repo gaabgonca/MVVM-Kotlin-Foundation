@@ -1,11 +1,11 @@
-package com.graymandev.mvvmfoundation.view
+package com.graymandev.mvvmfoundation.view.feed
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.chetantuteja.easybinding.BindingFragment
 import com.graymandev.mvvmfoundation.databinding.FragmentFeedBinding
+import com.graymandev.mvvmfoundation.model.database.entities.TimeRecord
 import com.graymandev.mvvmfoundation.viewmodel.ButtonControlsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,9 +14,12 @@ class FeedFragment : BindingFragment<FragmentFeedBinding>() {
 
     private val viewModel: ButtonControlsViewModel by activityViewModels()
 
+
     override fun init() {
+        val adapter = FeedListAdapter(arrayListOf())
+        binding.recyclerView.adapter = adapter
         viewModel.timeRecordsLiveData.observe(viewLifecycleOwner){ recordsList ->
-            binding.firstText.text = recordsList.firstOrNull()?.dateTime ?: "NO DATA"
+           adapter.updateRecordsList(recordsList)
         }
     }
 
