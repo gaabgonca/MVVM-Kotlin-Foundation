@@ -2,87 +2,55 @@ package com.graymandev.mvvmfoundation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
-import androidx.fragment.app.commitNow
-import com.graymandev.mvvmfoundation.constants.NavigationConstants.ControlsTag
-import com.graymandev.mvvmfoundation.constants.NavigationConstants.FeedTag
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.google.android.material.navigation.NavigationBarView
 import com.graymandev.mvvmfoundation.databinding.ActivityMainBinding
-import com.graymandev.mvvmfoundation.view.ButtonControlsFragment
-import com.graymandev.mvvmfoundation.view.FeedFragment
+import com.graymandev.mvvmfoundation.view.navigation.ViewPagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var buttonControlsFragment: ButtonControlsFragment
-    private lateinit var feedFragment: FeedFragment
+    private val onNavigationItemSelectedListener =
+        NavigationBarView.OnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.page_controls -> {
+                    binding.viewPager.currentItem = 0
+                    return@OnItemSelectedListener true
+                }
+                R.id.page_feed -> {
+                    binding.viewPager.currentItem = 1
+                    return@OnItemSelectedListener true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
 
-        //This checks if the [Activity] was created before
-        // If savedInstanceState is null, create fragments and show ButtonControlsFragment
-        if (savedInstanceState == null) {
-            createFragments()
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                add(binding.mainFragmentContainer.id, buttonControlsFragment, ControlsTag)
-            }
-        } else {
-            restoreFragments(savedInstanceState)
-        }
+        viewPagerAdapter = ViewPagerAdapter(this)
+        binding.viewPager.adapter = viewPagerAdapter
 
         //When clicking a tab, change the fragment to show
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.page_controls -> {
-                    loadFragmentInContainer(buttonControlsFragment, ControlsTag)
-                }
-                R.id.page_feed -> {
-                    loadFragmentInContainer(feedFragment, FeedTag)
-                }
-                else -> {
-                    false
+        binding.bottomNavigation.setOnItemSelectedListener(onNavigationItemSelectedListener)
+
+        //When sliding from a page to another, update the bottom navigation
+        binding.viewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                when (position) {
+                    0 -> binding.bottomNavigation.menu.findItem(R.id.page_controls).isChecked = true
+                    1 -> binding.bottomNavigation.menu.findItem(R.id.page_feed).isChecked = true
                 }
             }
-
-        }
+        })
 
         setContentView(view)
-    }
-
-
-    /**
-     * Replaces current shown fragment
-     */
-    private fun loadFragmentInContainer(fragment: Fragment, tag: String) : Boolean {
-        supportFragmentManager.commitNow(true) {
-            replace(
-                binding.mainFragmentContainer.id, fragment,
-                tag
-            )
-        }
-        return true
-    }
-
-    /**
-     * On first launch fragments need to be initialized
-     */
-    private fun createFragments() {
-        buttonControlsFragment = ButtonControlsFragment()
-        feedFragment = FeedFragment()
-    }
-
-    /**
-     * When [savedInstanceState] is not null, do not create fragments again.
-     * Find them by tag.
-     */
-    private fun restoreFragments(savedInstanceState: Bundle) {
-        buttonControlsFragment =
-            supportFragmentManager.findFragmentByTag(ControlsTag) as ButtonControlsFragment
     }
 }
