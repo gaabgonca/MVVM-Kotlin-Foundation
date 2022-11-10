@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.graymandev.mvvmfoundation.view.ButtonControlsFragment
-import com.graymandev.mvvmfoundation.view.FeedFragment
+import com.graymandev.mvvmfoundation.view.feed.FeedFragment
 
 
 class ViewPagerAdapter(appCompatActivity : AppCompatActivity) : FragmentStateAdapter(appCompatActivity) {
