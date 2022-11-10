@@ -19,9 +19,7 @@ typealias MyCallback = () -> Unit
 
 
 @HiltViewModel
-class ButtonControlsViewModel @Inject constructor() : ViewModel() {
-
-    @Inject lateinit var timeRecordsRepository: TimeRecordsRepository
+class ButtonControlsViewModel @Inject constructor(private val timeRecordsRepository: TimeRecordsRepository) : ViewModel() {
 
     //The private one is mutable, can be changed inside the viewmodel
     private val _timeRecordsLiveData = MutableLiveData<List<TimeRecord>>()
