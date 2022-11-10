@@ -9,4 +9,5 @@
     <string name="controls_label">Controls</string>
     <string name="feed_label">Feed</string>
     <string name="add_record">ADD RECORD</string>
+    <string name="element_text">default viewholder text</string>
 </resources>
