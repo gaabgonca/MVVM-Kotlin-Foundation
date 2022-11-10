@@ -6,7 +6,9 @@ import com.chetantuteja.easybinding.BindingActivity
 import com.google.android.material.navigation.NavigationBarView
 import com.graymandev.mvvmfoundation.databinding.ActivityMainBinding
 import com.graymandev.mvvmfoundation.view.navigation.ViewPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>() {
 
     private val onNavigationItemSelectedListener =
