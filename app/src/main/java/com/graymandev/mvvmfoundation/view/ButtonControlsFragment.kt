@@ -1,16 +1,12 @@
 package com.graymandev.mvvmfoundation.view
 
-import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.chetantuteja.easybinding.BindingFragment
 import com.graymandev.mvvmfoundation.databinding.FragmentButtonControlsBinding
-import com.graymandev.mvvmfoundation.databinding.FragmentFeedBinding
+import com.graymandev.mvvmfoundation.viewmodel.ButtonControlsViewModel
 
 class ButtonControlsFragment : BindingFragment<FragmentButtonControlsBinding>() {
 

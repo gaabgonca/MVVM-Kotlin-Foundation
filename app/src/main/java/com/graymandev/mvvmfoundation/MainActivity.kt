@@ -1,7 +1,5 @@
 package com.graymandev.mvvmfoundation
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.chetantuteja.easybinding.BindingActivity
@@ -53,7 +51,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>() {
 
     //This happens inside onCreate
     override fun setupViewBinding(inflater: LayoutInflater): ActivityMainBinding {
-        return ActivityMainBinding.inflate(inflater);
+        return ActivityMainBinding.inflate(inflater)
     }
 
 }

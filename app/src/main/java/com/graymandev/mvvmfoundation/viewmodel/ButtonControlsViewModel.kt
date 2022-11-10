@@ -1,4 +1,4 @@
-package com.graymandev.mvvmfoundation.view
+package com.graymandev.mvvmfoundation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
