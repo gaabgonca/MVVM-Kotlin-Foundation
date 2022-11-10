@@ -3,6 +3,7 @@ package com.graymandev.mvvmfoundation.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.chetantuteja.easybinding.BindingFragment
 import com.graymandev.mvvmfoundation.databinding.FragmentButtonControlsBinding
@@ -12,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ButtonControlsFragment : BindingFragment<FragmentButtonControlsBinding>() {
 
-    private val viewModel: ButtonControlsViewModel by viewModels()
+    private val viewModel: ButtonControlsViewModel by activityViewModels()
 
 
     override fun init() {

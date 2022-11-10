@@ -2,6 +2,7 @@ package com.graymandev.mvvmfoundation.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.chetantuteja.easybinding.BindingFragment
 import com.graymandev.mvvmfoundation.databinding.FragmentFeedBinding
@@ -11,11 +12,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FeedFragment : BindingFragment<FragmentFeedBinding>() {
 
-    private val viewModel: ButtonControlsViewModel by viewModels()
+    private val viewModel: ButtonControlsViewModel by activityViewModels()
 
     override fun init() {
         viewModel.timeRecordsLiveData.observe(viewLifecycleOwner){ recordsList ->
-            binding.firstText.text = recordsList.getOrNull(0)?.dateTime ?: "NO DATA"
+            binding.firstText.text = recordsList.firstOrNull()?.dateTime ?: "NO DATA"
         }
     }
 

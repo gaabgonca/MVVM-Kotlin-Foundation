@@ -13,8 +13,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
 typealias MyCallback = () -> Unit
+
 
 @HiltViewModel
 class ButtonControlsViewModel @Inject constructor() : ViewModel() {
