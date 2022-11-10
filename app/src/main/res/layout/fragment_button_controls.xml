@@ -19,6 +19,12 @@
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
            >
+           <com.google.android.material.button.MaterialButton
+               android:id="@+id/add_record_button"
+               android:layout_width="@dimen/main_button_width"
+               android:layout_height="@dimen/main_button_height"
+               android:text="@string/add_record"
+               />
 
        <com.google.android.material.button.MaterialButton
            android:id="@+id/get_data_button"

@@ -1,30 +1,29 @@
 package com.graymandev.mvvmfoundation.view
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.graymandev.mvvmfoundation.R
-import com.graymandev.mvvmfoundation.databinding.FragmentButtonControlsBinding
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import com.chetantuteja.easybinding.BindingFragment
 import com.graymandev.mvvmfoundation.databinding.FragmentFeedBinding
+import com.graymandev.mvvmfoundation.viewmodel.ButtonControlsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class FeedFragment : Fragment() {
+@AndroidEntryPoint
+class FeedFragment : BindingFragment<FragmentFeedBinding>() {
 
-    private var _binding : FragmentFeedBinding? = null
-    private val binding get() : FragmentFeedBinding = _binding!!
+    private val viewModel: ButtonControlsViewModel by activityViewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentFeedBinding.inflate(layoutInflater,container,false)
-        val view = binding.root
-        return view
+    override fun init() {
+        viewModel.timeRecordsLiveData.observe(viewLifecycleOwner){ recordsList ->
+            binding.firstText.text = recordsList.firstOrNull()?.dateTime ?: "NO DATA"
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentFeedBinding {
+       return FragmentFeedBinding.inflate(inflater,container,false)
     }
 }
