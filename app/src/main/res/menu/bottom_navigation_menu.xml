@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_controls"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_build_24"
+        android:title="@string/controls_label"/>
+    <item
+        android:id="@+id/page_feed"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_dynamic_feed_24"
+        android:title="@string/feed_label"/>
+</menu>
