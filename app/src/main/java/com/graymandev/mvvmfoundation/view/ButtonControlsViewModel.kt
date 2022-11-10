@@ -1,7 +1,11 @@
 package com.graymandev.mvvmfoundation.view
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 
 class ButtonControlsViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    fun printText(s: String) {
+        Log.i("VIEWMODEL", "IT WORKS")
+        println(s)
+    }
 }

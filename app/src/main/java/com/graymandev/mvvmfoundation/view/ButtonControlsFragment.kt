@@ -1,5 +1,6 @@
 package com.graymandev.mvvmfoundation.view
 
+import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,41 +8,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.chetantuteja.easybinding.BindingFragment
 import com.graymandev.mvvmfoundation.databinding.FragmentButtonControlsBinding
+import com.graymandev.mvvmfoundation.databinding.FragmentFeedBinding
 
-class ButtonControlsFragment : Fragment() {
-
-    private var _binding : FragmentButtonControlsBinding? = null
-    private val binding get() = _binding!!
+class ButtonControlsFragment : BindingFragment<FragmentButtonControlsBinding>() {
 
     private lateinit var viewModel: ButtonControlsViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentButtonControlsBinding.inflate(layoutInflater,container,false)
-        val view = binding.root
 
+    override fun init() {
+        viewModel = ViewModelProvider(this).get(ButtonControlsViewModel::class.java)
         binding.getDataButton.setOnClickListener{
             Toast.makeText(activity, "Getting data from server...", Toast.LENGTH_SHORT).show()
+            viewModel.printText("ViewModel works ")
         }
 
         binding.wipeDataButton.setOnClickListener{
             Toast.makeText(activity, "Deleting data from db...", Toast.LENGTH_SHORT).show()
         }
-
-        return view;
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ButtonControlsViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentButtonControlsBinding {
+       return FragmentButtonControlsBinding.inflate(inflater,container,false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
+

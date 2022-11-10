@@ -50,6 +50,12 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    //Material3 components
     implementation 'com.google.android.material:material:1.7.0'
+    //ViewPager UI component
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    //Abstraction to ease binding
+    implementation 'io.github.chetan-tuteja:easy-binding:1.0.0'
+
 }
