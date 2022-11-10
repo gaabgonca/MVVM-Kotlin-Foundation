@@ -1,6 +1,5 @@
 package com.graymandev.mvvmfoundation.view
 
-import androidx.lifecycle.ViewModelProvider
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -17,14 +16,20 @@ class ButtonControlsFragment : BindingFragment<FragmentButtonControlsBinding>() 
 
 
     override fun init() {
-        binding.getDataButton.setOnClickListener{
-            Toast.makeText(activity, "Getting data from server...", Toast.LENGTH_SHORT).show()
-            viewModel.printText("ViewModel works ")
+        binding.addRecordButton.setOnClickListener{
+            viewModel.recordNow {
+                Toast.makeText(activity, "Time recorded", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.wipeDataButton.setOnClickListener{
-            Toast.makeText(activity, "Deleting data from db...", Toast.LENGTH_SHORT).show()
-            viewModel.printText("Injected ViewModel works too")
+            viewModel.deleteAllRecords {
+                Toast.makeText(activity, "Deleted all records", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.getDataButton.setOnClickListener{
+            viewModel.getAllRecords()
         }
     }
 

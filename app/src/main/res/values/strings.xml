@@ -8,4 +8,5 @@
     <string name="wipe_data">WIPE DATA</string>
     <string name="controls_label">Controls</string>
     <string name="feed_label">Feed</string>
+    <string name="add_record">ADD RECORD</string>
 </resources>
