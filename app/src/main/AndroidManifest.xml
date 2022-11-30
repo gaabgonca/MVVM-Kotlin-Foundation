@@ -14,8 +14,20 @@
         android:theme="@style/Theme.MVVMFoundation"
         tools:targetApi="31">
         <activity
+            android:name=".view.intro.IntroActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MVVMFoundation.NoActionBar"/>
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MVVMFoundation.NoActionBar"/>
+        <activity
+            android:name=".view.splash.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MVVMFoundation.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

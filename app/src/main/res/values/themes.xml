@@ -13,4 +13,17 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Splash screen style -->
+    <style name="Theme.App.Starting" parent= "Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/BackgroundGreenPrimary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_sativapp_logo</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.MVVMFoundation</item>
+    </style>
+
+    <style name="Theme.MVVMFoundation.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
