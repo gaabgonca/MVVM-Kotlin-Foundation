@@ -54,7 +54,7 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>() {
                 // Call this when your activity is done and should be closed.
                 finish()
             },
-            3000 // Here we pass the delay time in milliSeconds after which the splash activity will disappear.
+            3000) // Here we pass the delay time in milliSeconds after which the splash activity will disappear.
     }
 
 }
