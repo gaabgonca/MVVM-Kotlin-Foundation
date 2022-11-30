@@ -85,7 +85,11 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
     implementation "io.reactivex.rxjava3:rxkotlin:3.0.1"
 
+    // splash screen dependencies
+    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
+    implementation "com.airbnb.android:lottie:5.2.0"
 
+    
 }
 
 // Allow references to generated code
